@@ -1,0 +1,28 @@
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.exe.config
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.Form1.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.Properties.Resources.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.ReturnOnInvestment.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.exe
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.pdb
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Debug\Calculations.dll
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.exe
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.pdb
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.csprojResolveAssemblyReference.cache
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.csproj.GenerateResource.Cache
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.AddInvestment.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.AddReturn.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.exe
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\FSharpInterop.exe
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\FSharpInterop.pdb
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\FSharpInterop.xml
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.csprojResolveAssemblyReference.cache
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.AddInvestment.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.AddReturn.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.Form1.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.Properties.Resources.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.ReturnOnInvestment.resources
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.csproj.GenerateResource.Cache
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.exe
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\obj\x86\Debug\InvestmentTracker.pdb
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.exe.config
+C:\Working\Investments - Copy\InvestmentTracker\InvestmentTracker\bin\Debug\InvestmentTracker.pdb

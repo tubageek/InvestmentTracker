@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InvestmentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="InvestmentModelStoreContainer">
+          <EntitySet Name="MutualFundReturnType" EntityType="InvestmentModel.Store.MutualFundReturnType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFundSourceType" EntityType="InvestmentModel.Store.MutualFundSourceType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFund" EntityType="InvestmentModel.Store.MutualFund" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFundPriceHistory" EntityType="InvestmentModel.Store.MutualFundPriceHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFundReturn" EntityType="InvestmentModel.Store.MutualFundReturn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFundTransaction" EntityType="InvestmentModel.Store.MutualFundTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MutualFundView" EntityType="InvestmentModel.Store.MutualFundView" store:Type="Views" store:Schema="dbo" store:Name="MutualFundView">
+            <DefiningQuery>SELECT 
+      [MutualFundView].[MutualFundID] AS [MutualFundID], 
+      [MutualFundView].[MutualFundSymbol] AS [MutualFundSymbol], 
+      [MutualFundView].[Amount] AS [Amount], 
+      [MutualFundView].[TransactionDate] AS [TransactionDate], 
+      [MutualFundView].[PricePerShare] AS [PricePerShare], 
+      [MutualFundView].[NumberOfShares] AS [NumberOfShares], 
+      [MutualFundView].[ReturnType] AS [ReturnType], 
+      [MutualFundView].[MutualFundDescription] AS [MutualFundDescription], 
+      [MutualFundView].[HasBalance] AS [HasBalance], 
+      [MutualFundView].[IsRetirementFund] AS [IsRetirementFund]
+      FROM [dbo].[MutualFundView] AS [MutualFundView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_MutualFundReturn_MutualFund" Association="InvestmentModel.Store.FK_MutualFundReturn_MutualFund">
+            <End Role="MutualFund" EntitySet="MutualFund" />
+            <End Role="MutualFundReturn" EntitySet="MutualFundReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MutualFundReturn_MutualFundReturnType" Association="InvestmentModel.Store.FK_MutualFundReturn_MutualFundReturnType">
+            <End Role="MutualFundReturnType" EntitySet="MutualFundReturnType" />
+            <End Role="MutualFundReturn" EntitySet="MutualFundReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MutualFundTransaction_MutualFund" Association="InvestmentModel.Store.FK_MutualFundTransaction_MutualFund">
+            <End Role="MutualFund" EntitySet="MutualFund" />
+            <End Role="MutualFundTransaction" EntitySet="MutualFundTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MutualFundReturnType">
+          <Key>
+            <PropertyRef Name="MutualFundReturnTypeName" />
+          </Key>
+          <Property Name="MutualFundReturnTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MutualFundSourceType">
+          <Key>
+            <PropertyRef Name="MutualFundSourceTypeName" />
+          </Key>
+          <Property Name="MutualFundSourceTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MutualFund">
+          <Key>
+            <PropertyRef Name="MutualFundID" />
+          </Key>
+          <Property Name="MutualFundID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MutualFundSymbol" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="MutualFundDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="NumberOfShares" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="LastKnownValue" Type="decimal" Nullable="false" Precision="9" Scale="3" />
+          <Property Name="DateValueRecorded" Type="datetime" />
+          <Property Name="HasBalance" Type="bit" Nullable="false" />
+          <Property Name="IsRetirementFund" Type="bit" Nullable="false" />
+          <Property Name="IsGoogleTracked" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MutualFundPriceHistory">
+          <Key>
+            <PropertyRef Name="MutualFundSymbol" />
+            <PropertyRef Name="QuoteDate" />
+          </Key>
+          <Property Name="MutualFundSymbol" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="QuoteDate" Type="date" Nullable="false" />
+          <Property Name="DayPrice" Type="decimal" Nullable="false" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="MutualFundReturn">
+          <Key>
+            <PropertyRef Name="MutualFundReturnID" />
+          </Key>
+          <Property Name="MutualFundReturnID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MutualFundID" Type="int" Nullable="false" />
+          <Property Name="MutualFundReturnTypeName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="NumberOfShares" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="PricePerShare" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MutualFundTransaction">
+          <Key>
+            <PropertyRef Name="MutualFundTransactionID" />
+          </Key>
+          <Property Name="MutualFundTransactionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MutualFundID" Type="int" Nullable="false" />
+          <Property Name="NumberOfShares" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="PricePerShare" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="ActualAmount" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PersonalFinance.lta.MutualFundView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MutualFundView">
+          <Key>
+            <PropertyRef Name="MutualFundID" />
+            
+            
+            <PropertyRef Name="TransactionDate" />
+            
+            
+            <PropertyRef Name="ReturnType" />
+            
+            
+            <PropertyRef Name="IsRetirementFund" />
+          </Key>
+          <Property Name="MutualFundID" Type="int" Nullable="false" />
+          <Property Name="MutualFundSymbol" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="PricePerShare" Type="decimal" Nullable="false" Precision="12" Scale="3" />
+          <Property Name="NumberOfShares" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ReturnType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MutualFundDescription" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="HasBalance" Type="bit" Nullable="false" />
+          <Property Name="IsRetirementFund" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MutualFundReturn_MutualFund">
+          <End Role="MutualFund" Type="InvestmentModel.Store.MutualFund" Multiplicity="1" />
+          <End Role="MutualFundReturn" Type="InvestmentModel.Store.MutualFundReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFund">
+              <PropertyRef Name="MutualFundID" />
+            </Principal>
+            <Dependent Role="MutualFundReturn">
+              <PropertyRef Name="MutualFundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MutualFundReturn_MutualFundReturnType">
+          <End Role="MutualFundReturnType" Type="InvestmentModel.Store.MutualFundReturnType" Multiplicity="1" />
+          <End Role="MutualFundReturn" Type="InvestmentModel.Store.MutualFundReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFundReturnType">
+              <PropertyRef Name="MutualFundReturnTypeName" />
+            </Principal>
+            <Dependent Role="MutualFundReturn">
+              <PropertyRef Name="MutualFundReturnTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MutualFundTransaction_MutualFund">
+          <End Role="MutualFund" Type="InvestmentModel.Store.MutualFund" Multiplicity="1" />
+          <End Role="MutualFundTransaction" Type="InvestmentModel.Store.MutualFundTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFund">
+              <PropertyRef Name="MutualFundID" />
+            </Principal>
+            <Dependent Role="MutualFundTransaction">
+              <PropertyRef Name="MutualFundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetLast12StartDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InvestmentModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InvestmentEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="MutualFundViews" EntityType="InvestmentModel.MutualFundView" />
+          <EntitySet Name="MutualFunds" EntityType="InvestmentModel.MutualFund" />
+          <EntitySet Name="MutualFundReturnTypes" EntityType="InvestmentModel.MutualFundReturnType" />
+          <EntitySet Name="MutualFundSourceTypes" EntityType="InvestmentModel.MutualFundSourceType" />
+          <EntitySet Name="MutualFundReturns" EntityType="InvestmentModel.MutualFundReturn" />
+          <EntitySet Name="MutualFundTransactions" EntityType="InvestmentModel.MutualFundTransaction" />
+          <AssociationSet Name="FK_MutualFundReturn_MutualFundReturnType" Association="InvestmentModel.FK_MutualFundReturn_MutualFundReturnType">
+            <End Role="MutualFundReturnType" EntitySet="MutualFundReturnTypes" />
+            <End Role="MutualFundReturn" EntitySet="MutualFundReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MutualFundReturn_MutualFund" Association="InvestmentModel.FK_MutualFundReturn_MutualFund">
+            <End Role="MutualFund" EntitySet="MutualFunds" />
+            <End Role="MutualFundReturn" EntitySet="MutualFundReturns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MutualFundTransaction_MutualFund" Association="InvestmentModel.FK_MutualFundTransaction_MutualFund">
+            <End Role="MutualFund" EntitySet="MutualFunds" />
+            <End Role="MutualFundTransaction" EntitySet="MutualFundTransactions" />
+          </AssociationSet>
+          <EntitySet Name="MutualFundPriceHistories" EntityType="InvestmentModel.MutualFundPriceHistory" />
+          <FunctionImport Name="GetLast12StartDate" ReturnType="Collection(DateTime)" />
+        </EntityContainer>
+        <EntityType Name="MutualFundView">
+          <Key>
+            <PropertyRef Name="MutualFundID" />
+            <PropertyRef Name="TransactionDate" />
+            <PropertyRef Name="ReturnType" />
+            <PropertyRef Name="IsRetirementFund" />
+          </Key>
+          <Property Type="Int32" Name="MutualFundID" Nullable="false" />
+          <Property Type="String" Name="MutualFundSymbol" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="PricePerShare" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="Decimal" Name="NumberOfShares" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="String" Name="ReturnType" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MutualFundDescription" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="HasBalance" Nullable="false" />
+          <Property Type="Boolean" Name="IsRetirementFund" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MutualFund">
+          <Key>
+            <PropertyRef Name="MutualFundID" />
+          </Key>
+          <Property Type="Int32" Name="MutualFundID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="MutualFundSymbol" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MutualFundDescription" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AccountID" Nullable="false" />
+          <Property Type="Decimal" Name="NumberOfShares" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="LastKnownValue" Nullable="false" Precision="9" Scale="3" />
+          <Property Type="DateTime" Name="DateValueRecorded" Precision="3" />
+          <Property Type="Boolean" Name="HasBalance" Nullable="false" />
+          <NavigationProperty Name="MutualFundReturns" Relationship="InvestmentModel.FK_MutualFundReturn_MutualFund" FromRole="MutualFund" ToRole="MutualFundReturn" />
+          <NavigationProperty Name="MutualFundTransactions" Relationship="InvestmentModel.FK_MutualFundTransaction_MutualFund" FromRole="MutualFund" ToRole="MutualFundTransaction" />
+          <Property Type="Boolean" Name="IsRetirementFund" Nullable="false" />
+          <Property Type="Boolean" Name="IsGoogleTracked" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MutualFundReturnType">
+          <Key>
+            <PropertyRef Name="MutualFundReturnTypeName" />
+          </Key>
+          <Property Type="String" Name="MutualFundReturnTypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MutualFundReturns" Relationship="InvestmentModel.FK_MutualFundReturn_MutualFundReturnType" FromRole="MutualFundReturnType" ToRole="MutualFundReturn" />
+        </EntityType>
+        <EntityType Name="MutualFundSourceType">
+          <Key>
+            <PropertyRef Name="MutualFundSourceTypeName" />
+          </Key>
+          <Property Type="String" Name="MutualFundSourceTypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MutualFundReturn">
+          <Key>
+            <PropertyRef Name="MutualFundReturnID" />
+          </Key>
+          <Property Type="Int32" Name="MutualFundReturnID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="MutualFundID" Nullable="false" />
+          <Property Type="String" Name="MutualFundReturnTypeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="Decimal" Name="NumberOfShares" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="PricePerShare" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Destination" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MutualFundReturnType" Relationship="InvestmentModel.FK_MutualFundReturn_MutualFundReturnType" FromRole="MutualFundReturn" ToRole="MutualFundReturnType" />
+          <NavigationProperty Name="MutualFund" Relationship="InvestmentModel.FK_MutualFundReturn_MutualFund" FromRole="MutualFundReturn" ToRole="MutualFund" />
+        </EntityType>
+        <EntityType Name="MutualFundTransaction">
+          <Key>
+            <PropertyRef Name="MutualFundTransactionID" />
+          </Key>
+          <Property Type="Int32" Name="MutualFundTransactionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="MutualFundID" Nullable="false" />
+          <Property Type="Decimal" Name="NumberOfShares" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="PricePerShare" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="Decimal" Name="ActualAmount" Nullable="false" Precision="12" Scale="3" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Note" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MutualFund" Relationship="InvestmentModel.FK_MutualFundTransaction_MutualFund" FromRole="MutualFundTransaction" ToRole="MutualFund" />
+        </EntityType>
+        <Association Name="FK_MutualFundReturn_MutualFundReturnType">
+          <End Type="InvestmentModel.MutualFundReturnType" Role="MutualFundReturnType" Multiplicity="1" />
+          <End Type="InvestmentModel.MutualFundReturn" Role="MutualFundReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFundReturnType">
+              <PropertyRef Name="MutualFundReturnTypeName" />
+            </Principal>
+            <Dependent Role="MutualFundReturn">
+              <PropertyRef Name="MutualFundReturnTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MutualFundReturn_MutualFund">
+          <End Type="InvestmentModel.MutualFund" Role="MutualFund" Multiplicity="1" />
+          <End Type="InvestmentModel.MutualFundReturn" Role="MutualFundReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFund">
+              <PropertyRef Name="MutualFundID" />
+            </Principal>
+            <Dependent Role="MutualFundReturn">
+              <PropertyRef Name="MutualFundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MutualFundTransaction_MutualFund">
+          <End Type="InvestmentModel.MutualFund" Role="MutualFund" Multiplicity="1" />
+          <End Type="InvestmentModel.MutualFundTransaction" Role="MutualFundTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MutualFund">
+              <PropertyRef Name="MutualFundID" />
+            </Principal>
+            <Dependent Role="MutualFundTransaction">
+              <PropertyRef Name="MutualFundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MutualFundPriceHistory">
+          <Key>
+            <PropertyRef Name="MutualFundSymbol" />
+            <PropertyRef Name="QuoteDate" />
+          </Key>
+          <Property Type="String" Name="MutualFundSymbol" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="QuoteDate" Nullable="false" Precision="0" />
+          <Property Type="Decimal" Name="DayPrice" Nullable="false" Precision="6" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InvestmentModelStoreContainer" CdmEntityContainer="InvestmentEntities">
+          <EntitySetMapping Name="MutualFundViews">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundView">
+              <MappingFragment StoreEntitySet="MutualFundView">
+                <ScalarProperty Name="IsRetirementFund" ColumnName="IsRetirementFund" />
+                <ScalarProperty Name="HasBalance" ColumnName="HasBalance" />
+                <ScalarProperty Name="MutualFundDescription" ColumnName="MutualFundDescription" />
+                <ScalarProperty Name="ReturnType" ColumnName="ReturnType" />
+                <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+                <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MutualFundSymbol" ColumnName="MutualFundSymbol" />
+                <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFunds">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFund">
+              <MappingFragment StoreEntitySet="MutualFund">
+                <ScalarProperty Name="IsGoogleTracked" ColumnName="IsGoogleTracked" />
+                <ScalarProperty Name="IsRetirementFund" ColumnName="IsRetirementFund" />
+                <ScalarProperty Name="HasBalance" ColumnName="HasBalance" />
+                <ScalarProperty Name="DateValueRecorded" ColumnName="DateValueRecorded" />
+                <ScalarProperty Name="LastKnownValue" ColumnName="LastKnownValue" />
+                <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="MutualFundDescription" ColumnName="MutualFundDescription" />
+                <ScalarProperty Name="MutualFundSymbol" ColumnName="MutualFundSymbol" />
+                <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFundReturnTypes">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundReturnType">
+              <MappingFragment StoreEntitySet="MutualFundReturnType">
+                <ScalarProperty Name="MutualFundReturnTypeName" ColumnName="MutualFundReturnTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFundSourceTypes">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundSourceType">
+              <MappingFragment StoreEntitySet="MutualFundSourceType">
+                <ScalarProperty Name="MutualFundSourceTypeName" ColumnName="MutualFundSourceTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFundReturns">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundReturn">
+              <MappingFragment StoreEntitySet="MutualFundReturn">
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+                <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MutualFundReturnTypeName" ColumnName="MutualFundReturnTypeName" />
+                <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+                <ScalarProperty Name="MutualFundReturnID" ColumnName="MutualFundReturnID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFundTransactions">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundTransaction">
+              <MappingFragment StoreEntitySet="MutualFundTransaction">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="ActualAmount" ColumnName="ActualAmount" />
+                <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+                <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+                <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+                <ScalarProperty Name="MutualFundTransactionID" ColumnName="MutualFundTransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MutualFundPriceHistories">
+            <EntityTypeMapping TypeName="InvestmentModel.MutualFundPriceHistory">
+              <MappingFragment StoreEntitySet="MutualFundPriceHistory">
+                <ScalarProperty Name="DayPrice" ColumnName="DayPrice" />
+                <ScalarProperty Name="QuoteDate" ColumnName="QuoteDate" />
+                <ScalarProperty Name="MutualFundSymbol" ColumnName="MutualFundSymbol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetLast12StartDate" FunctionName="InvestmentModel.Store.GetLast12StartDate" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="InvestmentModel">
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundView" Width="1.5" PointX="0.75" PointY="0.75" Height="2.172587890625" />
+        <EntityTypeShape EntityType="InvestmentModel.MutualFund" Width="1.5" PointX="3.375" PointY="0.75" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundReturnType" Width="1.5" PointX="3.75" PointY="5.5" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundSourceType" Width="1.5" PointX="0.75" PointY="4.75" Height="1.2110807291666674" />
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundReturn" Width="1.5" PointX="6" PointY="0.75" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundTransaction" Width="1.5" PointX="6" PointY="4.625" Height="2.5571907552083317" />
+        <AssociationConnector Association="InvestmentModel.FK_MutualFundReturn_MutualFundReturnType">
+          <ConnectorPoint PointX="5.25" PointY="5.5" />
+          <ConnectorPoint PointX="5.625" PointY="5.125" />
+          <ConnectorPoint PointX="5.625" PointY="2.2208968098958328" />
+          <ConnectorPoint PointX="6" PointY="2.2208968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="InvestmentModel.FK_MutualFundReturn_MutualFund">
+          <ConnectorPoint PointX="4.875" PointY="1.4229484049479164" />
+          <ConnectorPoint PointX="6" PointY="1.4229484049479164" />
+        </AssociationConnector>
+        <AssociationConnector Association="InvestmentModel.FK_MutualFundTransaction_MutualFund">
+          <ConnectorPoint PointX="3.53125" PointY="3.6917936197916661" />
+          <ConnectorPoint PointX="3.53125" PointY="5.03125" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="5.0312499999999991" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="5.03125" />
+          <ConnectorPoint PointX="6" PointY="5.03125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="InvestmentModel.MutualFundPriceHistory" Width="1.5" PointX="0.75" PointY="6.75" Height="1.5956835937499996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

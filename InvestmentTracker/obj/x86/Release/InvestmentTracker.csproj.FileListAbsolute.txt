@@ -1,0 +1,13 @@
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.Form1.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.Properties.Resources.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.ReturnOnInvestment.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Release\InvestmentTracker.exe.config
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Release\InvestmentTracker.exe
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Release\InvestmentTracker.pdb
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\bin\Release\Calculations.dll
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.exe
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.pdb
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.csprojResolveAssemblyReference.cache
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.AddInvestment.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.AddReturn.resources
+C:\Working\Investments\InvestmentTracker\InvestmentTracker\obj\x86\Release\InvestmentTracker.csproj.GenerateResource.Cache

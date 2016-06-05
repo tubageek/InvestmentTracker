@@ -1,0 +1,12 @@
+c:\Working\FSharpInterop\FSharpInterop\bin\Debug\FSharpInterop.XML
+c:\Working\FSharpInterop\FSharpInterop\bin\Debug\FSharpInterop.exe
+c:\Working\FSharpInterop\FSharpInterop\bin\Debug\FSharpInterop.pdb
+c:\Working\FSharpInterop\FSharpInterop\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\Working\FSharpInterop\FSharpInterop\obj\x86\Debug\FSharpInterop.exe
+c:\Working\FSharpInterop\FSharpInterop\obj\x86\Debug\FSharpInterop.pdb
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\bin\Debug\FSharpInterop.XML
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\bin\Debug\FSharpInterop.exe
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\bin\Debug\FSharpInterop.pdb
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\obj\x86\Debug\FSharpInterop.exe
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\obj\x86\Debug\FSharpInterop.pdb
+C:\Working\Investments - Copy\InvestmentTracker\FSharpInterop\obj\x86\Debug\FSharpInterop.fsprojResolveAssemblyReference.cache

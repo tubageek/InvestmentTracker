@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InvestmentModelStoreContainer" CdmEntityContainer="InvestmentEntities">
+    <EntitySetMapping Name="MutualFundViews">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFundView">
+        <MappingFragment StoreEntitySet="MutualFundView">
+          <ScalarProperty Name="HasBalance" ColumnName="HasBalance" />
+          <ScalarProperty Name="MutualFundDescription" ColumnName="MutualFundDescription" />
+          <ScalarProperty Name="ReturnType" ColumnName="ReturnType" />
+          <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+          <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="MutualFundSymbol" ColumnName="MutualFundSymbol" />
+          <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MutualFunds">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFund">
+        <MappingFragment StoreEntitySet="MutualFund">
+          <ScalarProperty Name="HasBalance" ColumnName="HasBalance" />
+          <ScalarProperty Name="DateValueRecorded" ColumnName="DateValueRecorded" />
+          <ScalarProperty Name="LastKnownValue" ColumnName="LastKnownValue" />
+          <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="MutualFundDescription" ColumnName="MutualFundDescription" />
+          <ScalarProperty Name="MutualFundSymbol" ColumnName="MutualFundSymbol" />
+          <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MutualFundReturnTypes">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFundReturnType">
+        <MappingFragment StoreEntitySet="MutualFundReturnType">
+          <ScalarProperty Name="MutualFundReturnTypeName" ColumnName="MutualFundReturnTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MutualFundSourceTypes">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFundSourceType">
+        <MappingFragment StoreEntitySet="MutualFundSourceType">
+          <ScalarProperty Name="MutualFundSourceTypeName" ColumnName="MutualFundSourceTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MutualFundReturns">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFundReturn">
+        <MappingFragment StoreEntitySet="MutualFundReturn">
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+          <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="MutualFundReturnTypeName" ColumnName="MutualFundReturnTypeName" />
+          <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+          <ScalarProperty Name="MutualFundReturnID" ColumnName="MutualFundReturnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MutualFundTransactions">
+      <EntityTypeMapping TypeName="InvestmentModel.MutualFundTransaction">
+        <MappingFragment StoreEntitySet="MutualFundTransaction">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="ActualAmount" ColumnName="ActualAmount" />
+          <ScalarProperty Name="PricePerShare" ColumnName="PricePerShare" />
+          <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+          <ScalarProperty Name="MutualFundID" ColumnName="MutualFundID" />
+          <ScalarProperty Name="MutualFundTransactionID" ColumnName="MutualFundTransactionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
